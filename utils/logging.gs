@@ -8,7 +8,7 @@ function measuringExecutionTime() {
 
   // Log a JSON object at a DEBUG level. The log is labeled
   // with the message string in the log viewer, and the JSON content
-  // is displayed in the expanded log structure under "structPayload".
+  // is displayed in the expanded log structure under "jsonPayload".
   var parameters = {
       isValid: true,
       content: 'some string',
@@ -35,11 +35,11 @@ function measuringExecutionTime() {
  * @param {string} email The email to send with the row data.
  */
 function emailDataRow(rowNumber, email) {
-  Logger.log('Emailing data row ' + rowNumber + ' to ' + email);
+  console.log('Emailing data row ' + rowNumber + ' to ' + email);
   var sheet = SpreadsheetApp.getActiveSheet();
   var data = sheet.getDataRange().getValues();
   var rowData = data[rowNumber-1].join(" ");
-  Logger.log('Row ' + rowNumber + ' data: ' + rowData);
+  console.log('Row ' + rowNumber + ' data: ' + rowData);
   MailApp.sendEmail(email,
                     'Data in row ' + rowNumber,
                     rowData);
